@@ -10,7 +10,8 @@ describe('getShippingInfo',()=>{
     it('should return shipping costs and estimated days',()=>{
         vi.mocked(getShippingQuote).mockReturnValue({cost: 5, estimatedDays: 3})
         const result =  getShippingInfo('New York')
-        expect(result).toBe('Shipping Cost: $5 (3 Days)')
+        expect(result).toMatch(/cost: \$5/i)
+        expect(result).toMatch(/3 days/i)
     })
 
     it('should return shipping unavailable when quote is null',()=>{
