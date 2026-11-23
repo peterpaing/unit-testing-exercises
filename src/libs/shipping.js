@@ -10,3 +10,15 @@ export function getShippingFee(orderTotal) {
 
   return orderTotal >= 50 ? 0 : 5;
 }
+
+export function getCartSummary(items) {
+  let itemCount = 0;
+  let subtotal = 0;
+
+  for (const item of items) {
+    itemCount += item.quantity;
+    subtotal += item.price * item.quantity;
+  }
+
+  return { itemCount, subtotal };
+}
